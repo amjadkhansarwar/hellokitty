@@ -16,7 +16,7 @@
 .hello-kitty {
   width: 200px;
   height: 200px;
-  background-image: url("hello-kitty.jpg");
+  background-image: url("/src/Hello-Kitty.png");
   background-size: cover;
   transition: transform 0.5s ease;
   cursor: pointer;
