@@ -1,23 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [rotate, setRotate] = useState<boolean>(false);
+  const [greeting, setGreeting] = useState<string>("");
+
+  const rotateHead = () => {
+    setRotate(true);
+    setTimeout(() => {
+      setRotate(false);
+    }, 1000);
+  };
+
+  const handleGreet = () => {
+    if (greeting.toLowerCase().includes("hello kitty")) {
+      rotateHead();
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div
+          className={`hello-kitty ${rotate ? "rotate" : ""}`}
+          onClick={rotateHead}
+        ></div>
+        <input
+          type="text"
+          value={greeting}
+          onChange={(e) => setGreeting(e.target.value)}
+          placeholder="Say Hello to Kitty"
+        />
+        <button onClick={handleGreet}>Say Hello</button>
       </header>
     </div>
   );
